@@ -44,6 +44,8 @@ module RSpecConsole
 
           Otherwise, code relading does not work.
         MSG
+      elsif defined?(Rails.application.reloader)
+        Rails.application.reloader.reload!
       else
         ActionDispatch::Reloader.cleanup!
         ActionDispatch::Reloader.prepare!
