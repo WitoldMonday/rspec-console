@@ -55,4 +55,10 @@ module RSpecConsole
 
   # Reloading FactoryGirl if necessary
   before_run { FactoryGirl.reload if defined?(FactoryGirl) }
+  
+  # Fix RSpec assert_no_example_groups_defined
+  before_run do
+    RSpec::Core::Configuration.send(:define_method, :assert_no_example_groups_defined) do |config|
+    end
+  end
 end
