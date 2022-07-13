@@ -4,7 +4,8 @@ module RSpecConsole
       def reset
         require 'rspec/core'
         raise 'Please use RSpec 2.10.0 or later' if obsolete_rspec?
-
+        RSpec::Core::Configuration.send(:define_method, :assert_no_example_groups_defined) do |config|
+        end
         ::RSpec::Core::Configuration.class_eval { define_method(:command) { 'rspec' } }
         ::RSpec::Core::Runner.disable_autorun!
         ::RSpec.reset
