@@ -81,7 +81,7 @@ class RSpecConsole::ConfigCache
     when :v2
       self.root_shared_examples.each do |context, name_blocks|
         name_blocks.each do |name, block|
-          ::RSpec.world.shared_example_group_registry.add(context, name, &block)
+          ::RSpec.world.shared_example_group_registry.add(context, name, &block.definition)
         end
       end
     end
