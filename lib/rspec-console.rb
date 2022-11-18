@@ -9,6 +9,7 @@ module RSpecConsole
 
   def self.run(*args)
     Runner.run(args)
+    print "\a"
   end
 
   def self.before_run(&hook)
